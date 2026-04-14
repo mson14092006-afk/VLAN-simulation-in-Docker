@@ -4,7 +4,7 @@ Simulates VLAN in Docker using containers:
 - 2 hosts in different VLANs
 - 1 router connecting them
 ## Topology:
-![Ping Result](images/Topology.png)
+![Ping Result](Topology.png)
 ## What I learn:
 - Linux Networking
 - Docker compose
