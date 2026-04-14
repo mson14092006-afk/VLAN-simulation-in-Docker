@@ -1,7 +1,7 @@
-# VLAN-simulation-in-Docker
+# Different-LANs-simulation-in-Docker
 ## Overview:
-Simulates VLAN in Docker using containers:
-- 2 hosts in different VLANs
+Simulates connection between two LANs in Docker using containers:
+- 2 hosts in different LANs
 - 1 router connecting them
 ## Topology:
 ![Ping Result](Topology.png)
