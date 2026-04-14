@@ -5,7 +5,7 @@ services:
     container_name: host_1
     command: sleep infinity
     networks: 
-      vlan10: 
+      lan10: 
         ipv4_address: 192.168.10.10
     volumes:
       - ./host_1.sh:/host_1.sh
@@ -16,7 +16,7 @@ services:
     container_name: host_2
     command: sleep infinity
     networks:
-      vlan20: 
+      lan20: 
         ipv4_address: 192.168.20.10
     volumes:
       - ./host_2.sh:/host_2.sh
@@ -27,21 +27,21 @@ services:
     container_name: router
     command: sleep infinity
     networks:
-      vlan10:
+      lan10:
         ipv4_address: 192.168.10.254
-      vlan20:
+      lan20:
         ipv4_address: 192.168.20.254
     volumes: 
       - ./router.sh:/router.sh
     cap_add:
       - NET_ADMIN      
 networks:
-  vlan10: 
+  lan10: 
     driver: bridge
     ipam:
       config: 
       - subnet: 192.168.10.0/24
-  vlan20:
+  lan20:
     driver: bridge
     ipam: 
       config: 
