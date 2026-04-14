@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+  host_1:
+    image: alpine
+    container_name: host_1
+    command: sleep infinity
+    networks: 
+      vlan10: 
+        ipv4_address: 192.168.10.10
+    volumes:
+      - ./host_1.sh:/host_1.sh
+    cap_add:
+      - NET_ADMIN
+  host_2:
+    image: alpine
+    container_name: host_2
+    command: sleep infinity
+    networks:
+      vlan20: 
+        ipv4_address: 192.168.20.10
+    volumes:
+      - ./host_2.sh:/host_2.sh
+    cap_add:
+      - NET_ADMIN
+  router:
+    image: alpine
+    container_name: router
+    command: sleep infinity
+    networks:
+      vlan10:
+        ipv4_address: 192.168.10.254
+      vlan20:
+        ipv4_address: 192.168.20.254
+    volumes: 
+      - ./router.sh:/router.sh
+    cap_add:
+      - NET_ADMIN      
+networks:
+  vlan10: 
+    driver: bridge
+    ipam:
+      config: 
+      - subnet: 192.168.10.0/24
+  vlan20:
+    driver: bridge
+    ipam: 
+      config: 
+      - subnet: 192.168.20.0/24
+      
